@@ -35,7 +35,7 @@ public class McpToolRegistry {
         return tools.get(toolName);
     }
 
-    public Collection<McpToolDefinition> getTools() {
-        return tools.values();
+    public Map<String, McpToolDefinition> getTools() {
+        return tools;
     }
 }

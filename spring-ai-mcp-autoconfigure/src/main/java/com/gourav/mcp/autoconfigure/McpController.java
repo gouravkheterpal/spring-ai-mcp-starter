@@ -27,6 +27,7 @@ public class McpController {
     public List<McpToolInfo> getTools() {
 
         return registry.getTools()
+                .values()
                 .stream()
                 .map(tool ->
                         new McpToolInfo(
