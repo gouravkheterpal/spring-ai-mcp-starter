@@ -4,25 +4,31 @@ import java.util.Map;
 
 public class AiToolCall {
 
-    private String tool;
+    private String toolName;
 
     private Map<String, Object> arguments;
 
-    public String getTool() {
-        return tool;
+    public String getToolName() {
+
+        return toolName;
     }
 
-    public void setTool(String tool) {
-        this.tool = tool;
+    public void setToolName(
+            String toolName
+    ) {
+
+        this.toolName = toolName;
     }
 
     public Map<String, Object> getArguments() {
+
         return arguments;
     }
 
     public void setArguments(
             Map<String, Object> arguments
     ) {
+
         this.arguments = arguments;
     }
 }

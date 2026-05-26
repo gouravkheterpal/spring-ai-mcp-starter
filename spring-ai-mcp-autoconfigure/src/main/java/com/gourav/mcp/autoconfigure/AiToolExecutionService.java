@@ -27,7 +27,7 @@ public class AiToolExecutionService {
 
         Object result =
                 invocationService.invoke(
-                        toolCall.getTool(),
+                        toolCall.getToolName(),
                         toolCall.getArguments()
                 );
 
