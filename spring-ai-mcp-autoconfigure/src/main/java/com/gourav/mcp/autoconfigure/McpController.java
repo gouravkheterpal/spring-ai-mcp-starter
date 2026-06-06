@@ -1,8 +1,12 @@
 package com.gourav.mcp.autoconfigure;
 
-import com.gourav.mcp.core.*;
+import com.gourav.mcp.autoconfigure.persistence.entity.ToolExecutionHistory;
+import com.gourav.mcp.autoconfigure.persistence.repository.ToolExecutionHistoryRepository;
+import com.gourav.mcp.core.McpToolInfo;
+import com.gourav.mcp.core.McpToolRegistry;
+import com.gourav.mcp.core.McpToolRequest;
+import com.gourav.mcp.core.McpToolResponse;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,14 +17,17 @@ public class McpController {
 
     private final McpInvocationService service;
     private final McpToolRegistry registry;
+    private final ToolExecutionHistoryRepository repository;
 
     public McpController(
             McpInvocationService service,
-            McpToolRegistry registry
+            McpToolRegistry registry,
+            ToolExecutionHistoryRepository repository
     ) {
 
         this.service = service;
         this.registry = registry;
+        this.repository = repository;
     }
 
     @GetMapping("/tools")
@@ -50,5 +57,12 @@ public class McpController {
                 );
 
         return new McpToolResponse(result);
+    }
+
+    @GetMapping("/audit")
+    public List<ToolExecutionHistory> getAuditHistory() {
+
+        return repository
+                .findTop50ByOrderByCreatedAtDesc();
     }
 }
