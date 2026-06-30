@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/mcp_db
     username: postgres
-    password: ${DB_PASSWORD}
+    password: Gourav@123
 
   jpa:
     hibernate:
